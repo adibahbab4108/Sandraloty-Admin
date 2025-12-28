@@ -1,8 +1,8 @@
-import type {ColumnDef} from '@tanstack/react-table';
-import {Badge} from '@/components/ui/badge';
-import {Button} from '@/components/ui/button';
-import {MoreHorizontal} from 'lucide-react';
-import {formatDate} from '@/utils/formatDate';
+import type { ColumnDef } from '@tanstack/react-table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { MoreHorizontal } from 'lucide-react';
+import { formatDate } from '@/utils/formatDate';
 
 import {
   DropdownMenu,
@@ -14,22 +14,23 @@ import {
 
 import defaultAvatar from '@/assets/default-image.jpg';
 
-import type {IUser} from './type';
+import type { IUser } from './type';
 
 export const columns: ColumnDef<IUser>[] = [
   //  User (Name + Email)
   {
     header: 'User',
-    cell: ({row}) => {
-      const user = row.original;
-      const avatarSrc = user.avatarUrl || defaultAvatar;
+    cell: ({ row }) => {
+      const userData = row.original;
+      console.log("User Data", userData)
+      const avatarSrc = userData.profile_url || defaultAvatar;
 
       return (
         <div className="flex items-center gap-3">
           {/* Avatar */}
           <img
             src={avatarSrc}
-            alt={user.displayName}
+            alt={userData.first_name}
             className="h-10 w-10 rounded-full object-cover border"
             onError={(e) => {
               e.currentTarget.src = defaultAvatar;
@@ -38,8 +39,8 @@ export const columns: ColumnDef<IUser>[] = [
 
           {/* Name & Email */}
           <div className="flex flex-col">
-            <span className="font-medium leading-none">{user.displayName}</span>
-            <span className="text-xs text-muted-foreground">{user.email}</span>
+            <span className="font-medium leading-none">{userData?.first_name}</span>
+            <span className="text-xs text-muted-foreground">{userData.email}</span>
           </div>
         </div>
       );
@@ -50,19 +51,26 @@ export const columns: ColumnDef<IUser>[] = [
   {
     accessorKey: 'phoneNumber',
     header: 'Phone',
+    cell: ({ row }) => {
+      const phone = row.original.phone || "N/A"
+      return (
+        <span className="font-medium leading-none text-gray-500">{phone}</span>
+
+      )
+    }
   },
 
   //  Role
   {
     accessorKey: 'role',
     header: 'Role',
-    cell: ({row}) => {
-      const role = row.original.role;
+    cell: ({ row }) => {
+      const role = row.original.role || "N/A";
 
       const roleColor: Record<typeof role, string> = {
         admin: 'bg-purple-600',
-        employee: 'bg-blue-600',
-        subscriber: 'bg-gray-500',
+        consumer: 'bg-blue-600',
+        contractor: 'bg-yellow-500',
       };
 
       return <Badge className={`${roleColor[role]} text-white`}>{role}</Badge>;
@@ -70,53 +78,54 @@ export const columns: ColumnDef<IUser>[] = [
   },
 
   //  Status
-  {
-    accessorKey: 'status',
-    header: 'Status',
-    cell: ({row}) => {
-      const status = row.original.status;
+  // {
+  //   accessorKey: 'status',
+  //   header: 'Status',
+  //   cell: ({ row }) => {
+  //     const status = row.original.status;
 
-      return status === 'active' ? (
-        <Badge className="bg-green-600 text-white">active</Badge>
-      ) : (
-        <Badge variant="outline">inactive</Badge>
-      );
-    },
-  },
+  //     return status === 'active' ? (
+  //       <Badge className="bg-green-600 text-white">active</Badge>
+  //     ) : (
+  //       <Badge variant="outline">inactive</Badge>
+  //     );
+  //   },
+  // },
 
   //  Email Verified
   {
     header: 'Email Verified',
-    cell: ({row}) =>
-      row.original.emailVerifiedAt ? (
-        <Badge className="bg-green-600 text-white">Verified</Badge>
-      ) : (
-        <Badge variant="outline">No</Badge>
-      ),
+    cell: ({ row }) =>
+      row.original.email_verified
+        ? (
+          <Badge className="bg-green-600 text-white">Verified</Badge>
+        ) : (
+          <Badge variant="destructive">Not verified</Badge>
+        ),
   },
 
   //  Designation (optional but useful)
-  {
-    accessorKey: 'designation',
-    header: 'Designation',
-    cell: ({row}) =>
-      row.original.designation ?? (
-        <span className="text-muted-foreground">—</span>
-      ),
-  },
+  // {
+  //   accessorKey: 'designation',
+  //   header: 'Designation',
+  //   cell: ({ row }) =>
+  //     row.original.designation ?? (
+  //       <span className="text-muted-foreground">—</span>
+  //     ),
+  // },
 
   //  Joined
   {
     accessorKey: 'createdAt',
     header: 'Joined',
-    cell: ({row}) => formatDate(row.original.createdAt),
+    cell: ({ row }) => formatDate(row.original.updated_at),
   },
 
   //  Actions
   {
     id: 'actions',
     header: 'Actions',
-    cell: ({row}) => {
+    cell: ({ row }) => {
       const user = row.original;
 
       return (

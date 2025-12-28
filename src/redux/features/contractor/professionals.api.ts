@@ -8,10 +8,9 @@ export const professionalsApi = createApi({
   endpoints: (builder) => ({
     // Authentication endpoints
     getProfessionals: builder.query({
-      query: (params) => ({
+      query: () => ({
         url: '/contractors',
         method: 'GET',
-        params: { ...params },
       }),
       providesTags: ['User'],
     }),

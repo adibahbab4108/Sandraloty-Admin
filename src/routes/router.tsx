@@ -10,7 +10,7 @@ import LoginPage from '@/pages/Login/LoginPage';
 // import Supplier from '@/pages/Supplier/Supplier';
 // import Assignment from '@/pages/Assignment/Assignment';
 // import Questions from '@/pages/Questions/Questions';
-import Clients from '@/pages/Clients/Clients';
+
 import Epmloyees from '@/pages/Epmloyees/Epmloyees';
 import Plan from '@/pages/Plan/Plan';
 
@@ -41,49 +41,16 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: 'professionals',
+        path: 'users',
         element: <Users />,
       },
-      {
-        path: 'customers',
-        element: <Clients />,
-      },
-      {
-        path: 'plans',
-        element: <Plan />,
-      },
-      {
-        path: 'employees',
-        element: <Epmloyees />,
-      },
       // {
-      //   path: 'suppliers',
-      //   element: <Supplier />,
+      //   path: 'plans',
+      //   element: <Plan />,
       // },
       // {
-      //   path: 'assignments',
-      //   element: <Assignment />,
-      // },
-      // {
-      //   path: 'assignments/:assignmentId/categories',
-      //   element: <Categories />,
-      // },
-      // {
-      //   path: 'assignments/categories/:categoryId/questions',
-      //   element: <Questions />,
-      // },
-      // {
-      //   path: 'Courses',
-      //   element: <Courses />,
-      // },
-
-      // {
-      //   path: 'vendor',
-      //   element: <Users />,
-      // },
-      // {
-      //   path: 'transactions',
-      //   element: <Transactions />,
+      //   path: 'employees',
+      //   element: <Epmloyees />,
       // },
       {
         path: '*',

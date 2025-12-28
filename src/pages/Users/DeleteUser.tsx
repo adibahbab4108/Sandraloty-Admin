@@ -10,7 +10,7 @@ import {
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { useDeleteUserMutation } from '@/redux/features/professionals/professionals.api';
+import { useDeleteUserMutation } from '@/redux/features/contractor/professionals.api';
 import { getErrorMessage } from '@/utils/getErrorMessage';
 import { Trash } from 'lucide-react';
 import { toast } from 'sonner';

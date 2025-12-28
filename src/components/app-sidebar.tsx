@@ -33,49 +33,19 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: 'Users (Professional)',
-      url: '/dashboard/professionals',
+      title: 'Users',
+      url: '/dashboard/users',
       icon: IconUsers,
     },
-    {
-      title: 'Users (Customer)',
-      url: '/dashboard/customers',
-      icon: IconMessageUser,
-    },
-    {
-      title: 'Plans',
-      url: '/dashboard/plans',
-      icon: IconReceipt2,
-    },
-    {
-      title: 'Employees',
-      url: '/dashboard/employees',
-      icon: IconListCheck,
-    },
     // {
-    //   title: 'Courses',
-    //   url: '/dashboard/courses',
-    //   icon: IconBuildingStore,
+    //   title: 'Plans',
+    //   url: '/dashboard/plans',
+    //   icon: IconReceipt2,
     // },
     // {
-    //   title: 'Vendor',
-    //   url: '/dashboard/vendor',
-    //   icon: IconBuildingStore,
-    // },
-    // {
-    //   title: 'Supplier',
-    //   url: '/dashboard/suppliers',
-    //   icon: IconUsers,
-    // },
-    // {
-    //   title: 'Assignment',
-    //   url: '/dashboard/assignments',
-    //   icon: IconClipboardCheck,
-    // },
-    // {
-    //   title: 'Pricing',
-    //   url: '/dashboard/pricing',
-    //   icon: IconTag,
+    //   title: 'Employees',
+    //   url: '/dashboard/employees',
+    //   icon: IconListCheck,
     // },
   ],
 };

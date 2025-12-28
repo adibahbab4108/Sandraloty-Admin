@@ -1,4 +1,3 @@
-// utils/formatDate.ts
 export type DateFormat =
     | 'YYYY-MM-DD'
     | 'DD/MM/YYYY'
@@ -7,10 +6,18 @@ export type DateFormat =
     | 'time' // e.g., 14:30:00
     | 'datetime'; // e.g., 2025-09-27 14:30:00
 
-export function formatDate(date: string | Date, format: DateFormat = 'DD/MM/YYYY'): string {
+export function formatDate(
+    date: string | Date | null | undefined,
+    format: DateFormat = 'DD/MM/YYYY'
+): string {
+    if (date == null) {
+        return '-'; 
+    }
     const d = typeof date === 'string' ? new Date(date) : date;
 
-    if (isNaN(d.getTime())) return 'Invalid Date';
+    if (!(d instanceof Date) || isNaN(d.getTime())) {
+        return '-'; 
+    }
 
     const year = d.getFullYear();
     const month = String(d.getMonth() + 1).padStart(2, '0');
@@ -38,6 +45,6 @@ export function formatDate(date: string | Date, format: DateFormat = 'DD/MM/YYYY
         case 'datetime':
             return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
         default:
-            return `${year}-${month}-${day}`;
+            return `${day}/${month}/${year}`;
     }
 }

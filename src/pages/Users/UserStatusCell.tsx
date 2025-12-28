@@ -1,6 +1,5 @@
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
-import {useUpdateUserMutation} from '@/features/users/userApi';
 
 type Props = {
   userId: string;
@@ -8,16 +7,15 @@ type Props = {
 };
 
 export default function UserStatusCell({userId, status}: Props) {
-  const [updateStatus, {isLoading}] = useUpdateUserMutation();
 
   const nextStatus = status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
 
   const handleToggle = async () => {
     try {
-      await updateStatus({
-        userId,
-        status: nextStatus,
-      }).unwrap();
+      // await updateStatus({
+      //   userId,
+      //   status: nextStatus,
+      // }).unwrap();
     } catch (error) {
       console.error('Failed to update user status', error);
     }
@@ -31,13 +29,13 @@ export default function UserStatusCell({userId, status}: Props) {
             ? 'bg-green-600 text-white'
             : 'bg-red-600 text-white'
         }>
-        {status}
+        {status} 
       </Badge>
 
       <Button
         size="sm"
         variant="outline"
-        disabled={isLoading}
+        // disabled={isLoading}
         onClick={handleToggle}>
         {status === 'ACTIVE' ? 'Make Inactive' : 'Make Active'}
       </Button>

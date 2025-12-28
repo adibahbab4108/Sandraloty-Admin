@@ -1,7 +1,7 @@
 import React from 'react';
 import { columns } from './Columns';
 import { DataTable } from '../DataTable';
-import { useGetProfessionalsQuery } from '@/redux/features/professionals/professionals.api';
+import { useGetUsersQuery } from '@/redux/features/user/user.api';
 
 export default function UsersTable({
   searchQuery,
@@ -17,30 +17,27 @@ export default function UsersTable({
     pageSize: 10,
   });
 
-  const { data, isLoading } = useGetProfessionalsQuery({
+  const { data: userData, isLoading: isUserLoading } = useGetUsersQuery({
     page: pagination.pageIndex + 1,
     limit: pagination.pageSize,
     search: searchQuery,
     sortBy: sortQuery,
     sortOrder,
-  });
-
-  console.log('user data', data?.data);
-
-
-  const totalRows = data?.meta?.pagination?.total ?? 0;
+  })
+  console.log(userData?.data)
+  const totalRows = userData?.meta?.pagination?.total ?? 0;
   const totalPages = Math.ceil(totalRows / pagination.pageSize);
 
   return (
     <div className="overflow-hidden rounded-md border">
       <DataTable
         columns={columns}
-        data={data?.data ?? []}
+        data={userData?.data ?? []}
         totalRows={totalRows}
         totalPages={totalPages}
         pagination={pagination}
         onPaginationChange={setPagination}
-        isLoading={isLoading}
+        isLoading={isUserLoading}
       />
     </div>
   );

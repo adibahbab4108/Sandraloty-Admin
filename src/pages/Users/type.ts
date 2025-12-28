@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import { z } from 'zod';
 
 // Role and status enums
 const roleSchema = z.enum(
@@ -58,17 +58,16 @@ export type UserStatus = 'active' | 'inactive';
 
 export interface IUser {
   id: string;
+  role: "consumer" | "admin" | "contractor" | string;
+  first_name: string;
+  last_name: string;
   email: string;
-  phoneNumber: string;
-  firstName: string;
-  lastName: string;
-  displayName: string;
-  role: UserRole;
-  designation: string | null;
-  status: UserStatus;
-  emailVerifiedAt: string | null;
-  terms: boolean | null;
-  avatarUrl: string | null;
-  createdAt: string;
-  updatedAt: string;
+  phone: string;
+  profile_url: string;
+  password?: string; 
+  email_verified: boolean;
+  created_at: string; // ISO date string
+  updated_at: string; // ISO date string
+  deleted_at: string | null;
+  contractor: null | Record<string, any>; 
 }
