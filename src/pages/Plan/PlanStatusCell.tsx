@@ -7,7 +7,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
-import {useUpdatePlanStatusMutation} from '@/features/plans/plansApi';
+import { useUpdatePlanStatusMutation } from '@/redux/features/plans/plansApi';
 import {ChevronDown, Loader2} from 'lucide-react'; // loader icon
 import {toast} from 'sonner';
 

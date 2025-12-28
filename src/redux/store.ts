@@ -1,18 +1,7 @@
 // src/app/store.ts
 import {configureStore} from '@reduxjs/toolkit';
 // import authReducer from '@/features/auth/authSlice';
-import {userApi} from '@/features/users/userApi';
-import {clientApi} from '@/features/client/clientApi';
-import {plansApi} from './../features/plans/plansApi';
-import {employeesApi} from '@/features/employees/employeesApi';
 
-import {coursesApi} from '@/features/courses/coursesApi';
-import {modulesApi} from '@/features/modules/modulesApi';
-import {transactionsApi} from '@/features/transactions/transactionsApi';
-import {certificateApi} from '@/features/certificate/certificateApi';
-import {contentApi} from '@/features/content/contentApi';
-import {statsApi} from '@/features/stats/statsApi';
-import {assignmentApi} from '@/features/assignment/assignmentApi'; // ✨ Import
 
 import {
   // persistStore,
@@ -23,22 +12,23 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { plansApi } from './features/plans/plansApi';
+import { professionalsApi } from './features/professionals/professionals.api';
+import { clientApi } from './features/client/client.api';
+import { employeesApi } from './features/employees/employeesApi';
+import { coursesApi } from './features/courses/coursesApi';
+import { modulesApi } from './features/modules/modulesApi';
+import { contentApi } from './features/content/contentApi';
+import { transactionsApi } from './features/transactions/transactionsApi';
+import { statsApi } from './features/stats/statsApi';
+import { certificateApi } from './features/certificate/certificateApi';
 
-// import storage from 'redux-persist/lib/storage';
-// import {persistReducer} from 'redux-persist';
-
-// const persistConfig = {
-//   key: 'auth',
-//   storage,
-// };
-
-// const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
     // auth: persistedAuthReducer,
     // [authApi.reducerPath]: authApi.reducer,
-    [userApi.reducerPath]: userApi.reducer,
+    [professionalsApi.reducerPath]: professionalsApi.reducer,
     [clientApi.reducerPath]: clientApi.reducer,
     [plansApi.reducerPath]: plansApi.reducer,
     [employeesApi.reducerPath]: employeesApi.reducer,
@@ -48,8 +38,7 @@ export const store = configureStore({
     [contentApi.reducerPath]: contentApi.reducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     [statsApi.reducerPath]: statsApi.reducer,
-    [assignmentApi.reducerPath]: assignmentApi.reducer,
-    [certificateApi.reducerPath]: certificateApi.reducer, // ✨ Add reducer
+    [certificateApi.reducerPath]: certificateApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -58,7 +47,7 @@ export const store = configureStore({
       },
     }).concat([
       // authApi.middleware,
-      userApi.middleware,
+      professionalsApi.middleware,
       clientApi.middleware,
       plansApi.middleware,
       employeesApi.middleware,
@@ -68,8 +57,7 @@ export const store = configureStore({
       contentApi.middleware,
       transactionsApi.middleware,
       certificateApi.middleware,
-      assignmentApi.middleware,
-      statsApi.middleware, // ✨ Add middleware
+      statsApi.middleware, 
     ]),
 });
 

@@ -1,5 +1,5 @@
 // src/features/auth/authApi.ts
-import {axiosBaseQuery} from '@/app/axiosBaseQuery';
+import {axiosBaseQuery} from '@/redux/axiosBaseQuery';
 import {createApi} from '@reduxjs/toolkit/query/react';
 import {setCredentials, logout} from './authSlice';
 

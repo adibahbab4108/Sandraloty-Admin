@@ -1,4 +1,4 @@
-import {axiosBaseQuery} from '@/app/axiosBaseQuery';
+import {axiosBaseQuery} from '@/redux/axiosBaseQuery';
 import {createApi} from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
 type PublicUploadUrlResponse = {

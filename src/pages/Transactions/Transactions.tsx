@@ -59,7 +59,7 @@ export default function Transactions() {
                     <div className="flex flex-wrap items-center gap-2">
                         {/* Filters */}
                         <Select value={statusFilter} onValueChange={setStatusFilter}>
-                            <SelectTrigger className="w-[140px]">
+                            <SelectTrigger className="w-35">
                                 <SelectValue placeholder="Status" />
                             </SelectTrigger>
                             <SelectContent>
@@ -73,7 +73,7 @@ export default function Transactions() {
                         </Select>
 
                         <Select value={gatewayFilter} onValueChange={setGatewayFilter}>
-                            <SelectTrigger className="w-[140px]">
+                            <SelectTrigger className="w-35">
                                 <SelectValue placeholder="Gateway" />
                             </SelectTrigger>
                             <SelectContent>
@@ -90,7 +90,7 @@ export default function Transactions() {
 
                         {/* Sorting */}
                         <Select onValueChange={handleSort} value={sort}>
-                            <SelectTrigger className="w-[160px]">
+                            <SelectTrigger className="w-40">
                                 <SelectValue placeholder="Sort By" />
                             </SelectTrigger>
                             <SelectContent>

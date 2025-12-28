@@ -38,7 +38,7 @@ export default function Users() {
         <h1 className="text-2xl font-bold">Users</h1>
         <div className="flex items-center gap-2">
           <Select onValueChange={handleSort} value={sort}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-45">
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
             <SelectContent>

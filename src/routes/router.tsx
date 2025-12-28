@@ -41,16 +41,16 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: 'users',
+        path: 'professionals',
         element: <Users />,
+      },
+      {
+        path: 'customers',
+        element: <Clients />,
       },
       {
         path: 'plans',
         element: <Plan />,
-      },
-      {
-        path: 'clients',
-        element: <Clients />,
       },
       {
         path: 'employees',

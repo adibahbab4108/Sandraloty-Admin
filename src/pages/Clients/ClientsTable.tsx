@@ -1,7 +1,7 @@
 import React from 'react';
 import {DataTable} from '../DataTable';
 import {columns} from './Columns';
-import {useClientsQuery} from '@/features/client/clientApi';
+import { useClientsQuery } from '@/redux/features/client/client.api';
 
 export default function ClientsTable({
   searchQuery,

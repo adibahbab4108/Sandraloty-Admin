@@ -7,8 +7,8 @@ import {
   IconListCheck, // ✨ Import Icon
 } from '@tabler/icons-react';
 
-import {NavMain} from '@/components/nav-main';
-import {NavUser} from '@/components/nav-user';
+import { NavMain } from '@/components/nav-main';
+import { NavUser } from '@/components/nav-user';
 import {
   Sidebar,
   SidebarContent,
@@ -18,7 +18,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 
 const data = {
   user: {
@@ -33,19 +33,19 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: 'Users',
-      url: '/dashboard/users',
+      title: 'Users (Professional)',
+      url: '/dashboard/professionals',
       icon: IconUsers,
+    },
+    {
+      title: 'Users (Customer)',
+      url: '/dashboard/customers',
+      icon: IconMessageUser,
     },
     {
       title: 'Plans',
       url: '/dashboard/plans',
       icon: IconReceipt2,
-    },
-    {
-      title: 'Clients',
-      url: '/dashboard/clients',
-      icon: IconMessageUser,
     },
     {
       title: 'Employees',
@@ -79,7 +79,7 @@ const data = {
     // },
   ],
 };
-export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -95,7 +95,7 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
                   className="size-6"
                 />
                 <span className="text-base font-semibold">
-                  Mic<span className="text-primary">kanic</span>
+                  Mic<span className="text-primary">kanic</span> Admin
                 </span>
               </Link>
             </SidebarMenuButton>

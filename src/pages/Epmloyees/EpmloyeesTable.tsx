@@ -1,7 +1,7 @@
 import React from 'react';
 import {DataTable} from '../DataTable';
 import {columns} from './Columns';
-import {useEmployeesQuery} from '@/features/employees/employeesApi';
+import { useEmployeesQuery } from '@/redux/features/employees/employeesApi';
 
 export default function EpmloyeesTable({
   searchQuery,

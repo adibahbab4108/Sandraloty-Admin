@@ -1,7 +1,7 @@
 import React from 'react';
 import {DataTable} from '../DataTable';
 import {columns} from './Columns';
-import {usePlansQuery} from '@/features/plans/plansApi';
+import { usePlansQuery } from '@/redux/features/plans/plansApi';
 
 export default function PlanTable({
   searchQuery,

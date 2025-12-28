@@ -30,7 +30,6 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { useUpdateUserMutation } from '@/features/users/userApi';
 import type z from 'zod';
 import { useEffect, useState } from 'react';
 
@@ -39,6 +38,7 @@ import { getErrorMessage } from '@/utils/getErrorMessage';
 // import { useGetPublicUploadUrlMutation } from '@/features/content/contentApi';
 import DeleteUser from './DeleteUser';
 import { FileUploadDirectUploadDemo } from '@/components/common/FileUploadDirectUploadDemo copy';
+import { useUpdateUserMutation } from '@/redux/features/professionals/professionals.api';
 function EditUser({ item, trigger }: { item: TUser; trigger: React.ReactNode }) {
     const isMobile = useIsMobile();
     const [open, setOpen] = useState(false);

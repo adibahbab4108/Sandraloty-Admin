@@ -32,7 +32,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { getErrorMessage } from '@/utils/getErrorMessage';
-import { useUpdateTransactionMutation } from '@/features/transactions/transactionsApi';
 import {
     TransactionEditSchema,
     TransactionStatus,
@@ -41,6 +40,7 @@ import {
 } from './type';
 import { Badge } from '@/components/ui/badge';
 import { formatDate } from '@/utils/formatDate';
+import { useUpdateTransactionMutation } from '@/redux/features/transactions/transactionsApi';
 
 function EditTransaction({ item, trigger }: { item: TTransaction; trigger: React.ReactNode }) {
     const isMobile = useIsMobile();
@@ -86,7 +86,7 @@ function EditTransaction({ item, trigger }: { item: TTransaction; trigger: React
     return (
         <Drawer direction={isMobile ? 'bottom' : 'right'} open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>{trigger}</DrawerTrigger>
-            <DrawerContent className={isMobile ? 'max-h-[90vh]' : 'h-screen w-full md:w-[500px]'}>
+            <DrawerContent className={isMobile ? 'max-h-[90vh]' : 'h-screen w-full md:w-125'}>
                 <DrawerHeader>
                     <DrawerTitle>Transaction Details</DrawerTitle>
                     <DrawerDescription>View and edit transaction information</DrawerDescription>
@@ -254,7 +254,7 @@ function EditTransaction({ item, trigger }: { item: TTransaction; trigger: React
                                                 value={field.value || ''}
                                                 onChange={field.onChange}
                                                 placeholder="Additional notes..."
-                                                className="min-h-[80px]"
+                                                className="min-h-20"
                                             />
                                         </FormControl>
                                         <FormMessage />

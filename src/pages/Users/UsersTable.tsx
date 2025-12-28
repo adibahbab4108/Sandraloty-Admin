@@ -1,7 +1,7 @@
 import React from 'react';
-import {columns} from './Columns';
-import {DataTable} from '../DataTable';
-import {useUsersQuery} from '@/features/users/userApi';
+import { columns } from './Columns';
+import { DataTable } from '../DataTable';
+import { useGetProfessionalsQuery } from '@/redux/features/professionals/professionals.api';
 
 export default function UsersTable({
   searchQuery,
@@ -17,7 +17,7 @@ export default function UsersTable({
     pageSize: 10,
   });
 
-  const {data, isLoading} = useUsersQuery({
+  const { data, isLoading } = useGetProfessionalsQuery({
     page: pagination.pageIndex + 1,
     limit: pagination.pageSize,
     search: searchQuery,
@@ -25,9 +25,8 @@ export default function UsersTable({
     sortOrder,
   });
 
-  console.log('[user data]', data?.data);
+  console.log('user data', data?.data);
 
-  //   console.log('from console:->', data);
 
   const totalRows = data?.meta?.pagination?.total ?? 0;
   const totalPages = Math.ceil(totalRows / pagination.pageSize);
