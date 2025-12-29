@@ -1,7 +1,7 @@
 import React from 'react';
 import { columns } from './Columns';
 import { DataTable } from '../DataTable';
-import { useGetUsersQuery } from '@/redux/features/user/user.api';
+import { useGetUsersQuery } from '@/redux/features/users/user.api';
 
 export default function UsersTable({
   searchQuery,

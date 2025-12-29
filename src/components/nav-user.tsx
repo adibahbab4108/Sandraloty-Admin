@@ -67,10 +67,13 @@ export function NavUser() {
               </Avatar>
 
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user?.first_name}</span>
+                <span className="truncate font-medium">{user?.first_name+" "+user?.last_name}</span>
                 <span className="text-muted-foreground truncate text-xs">
                   {user?.email}
                 </span>
+                {/* <span className="text-muted-foreground font-bold truncate text-xs">
+                  {user?.role}
+                </span> */}
               </div>
               <IconDotsVertical
                 className="ml-auto size-4 opacity-70 group-hover:opacity-100"

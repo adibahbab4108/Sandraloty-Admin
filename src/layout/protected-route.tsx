@@ -1,31 +1,32 @@
-// // src/components/layout/protected-route.tsx
-// import {Navigate, useLocation} from 'react-router';
-// import {useAuth} from '@/hooks/useAuth';
-// import {toast} from 'sonner';
+import { useEffect } from 'react';
+import { useAuth } from '@/hook/useAuth';
+import { Navigate, useLocation } from 'react-router';
+import { toast } from 'sonner';
+import { UnauthorizedLoginMessage } from '@/components/modules/Auth/UnauthorizedLoginMessage';
+import { Loading } from '@/components/common/LoadingPage';
 
-// interface ProtectedRouteProps {
-//   children: React.ReactNode;
-// }
+interface ProtectedRouteProps {
+    children: React.ReactNode;
+}
 
-// export const ProtectedRoute = ({children}: ProtectedRouteProps) => {
-//   const {isAuthenticated, isLoading, role} = useAuth();
-//   const location = useLocation();
+export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+    const authorizedRole = import.meta.env.VITE_AUTHORIZED_ROLE?.toLowerCase();
+    const { user, isLoading } = useAuth();
 
-//   if (isLoading) {
-//     return <div>Please wait a moment, Checking Authentication...</div>;
-//   }
+    useEffect(() => {
+        if (!isLoading && user && user.role !== authorizedRole) {
+            toast.warning('You are not authorized!');
+        }
+    }, [isLoading, user, authorizedRole]);
 
-//   // Not logged in
-//   if (!isAuthenticated) {
-//     return <Navigate to="/dashboard" state={{from: location}} replace />;
-//   }
+    if (isLoading) {
+        return <Loading message='Checking authentication...' />
+    }
+    if (!user) return <UnauthorizedLoginMessage />
 
-//   // Role check — only ADMIN allowed
-//   if (role !== import.meta.env.VITE_AUTHORIZED_ROLE) {
-//     toast.warning('You are not authorized!');
-//     return <Navigate to="/login" replace />;
-//   }
+    if (user.role !== authorizedRole) {
+        return <Navigate to="/login" replace />;
+    }
 
-//   // Otherwise show children
-//   return <>{children}</>;
-// };
+    return <>{children}</>;
+};

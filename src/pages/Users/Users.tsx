@@ -21,8 +21,8 @@ export default function Users() {
   const sortOptions = [
     {value: 'displayName', label: 'Name'},
     {value: 'email', label: 'Email'},
-    {value: 'createdAt', label: 'Created At'},
-    {value: 'updatedAt', label: 'Updated At'},
+    {value: 'createdAt', label: 'Joined'},
+    {value: 'updatedAt', label: 'Last Update'},
     {value: 'role', label: 'Role'},
     {value: 'status', label: 'Status'},
   ];
@@ -35,7 +35,7 @@ export default function Users() {
   return (
     <div className="p-2">
       <header className="flex items-center justify-between mb-2">
-        <h1 className="text-2xl font-bold">Contractor</h1>
+        <h1 className="text-2xl font-bold">All Users</h1>
         <div className="flex items-center gap-2">
           <Select onValueChange={handleSort} value={sort}>
             <SelectTrigger className="w-45">
