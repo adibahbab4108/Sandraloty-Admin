@@ -2,9 +2,6 @@ import * as React from 'react';
 import {
   IconDashboard,
   IconUsers,
-  IconReceipt2,
-  IconMessageUser,
-  IconListCheck, // ✨ Import Icon
 } from '@tabler/icons-react';
 
 import { NavMain } from '@/components/nav-main';
@@ -19,6 +16,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { Link } from 'react-router';
+import { useAuth } from '@/hook/useAuth';
 
 const data = {
   user: {
@@ -37,19 +35,11 @@ const data = {
       url: '/dashboard/users',
       icon: IconUsers,
     },
-    // {
-    //   title: 'Plans',
-    //   url: '/dashboard/plans',
-    //   icon: IconReceipt2,
-    // },
-    // {
-    //   title: 'Employees',
-    //   url: '/dashboard/employees',
-    //   icon: IconListCheck,
-    // },
   ],
 };
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user, token, logout, isLoading } = useAuth();
+  console.log(user, token)
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>

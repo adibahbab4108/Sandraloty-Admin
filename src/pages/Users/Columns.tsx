@@ -139,7 +139,7 @@ export const columns: ColumnDef<IUser>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuItem>View Profile</DropdownMenuItem>
 
-            {user.status === 'active' ? (
+            {/* {user.status === 'active' ? (
               <DropdownMenuItem className="text-yellow-600">
                 Deactivate
               </DropdownMenuItem>
@@ -147,7 +147,7 @@ export const columns: ColumnDef<IUser>[] = [
               <DropdownMenuItem className="text-green-600">
                 Activate
               </DropdownMenuItem>
-            )}
+            )} */}
 
             <DropdownMenuSeparator />
 
