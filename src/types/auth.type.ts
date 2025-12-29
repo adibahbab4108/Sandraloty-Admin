@@ -8,6 +8,7 @@ export interface User {
     role: string;
     first_name: string;
     last_name: string;
+    profileUrl?: string
 }
 
 export interface AuthContextType {
