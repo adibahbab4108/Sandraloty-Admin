@@ -5,6 +5,7 @@ import Users from '@/pages/Users/Users';
 import LoginPage from '@/pages/Login/LoginPage';
 import { ProtectedRoute } from '@/layout/protected-route';
 import ContractorDetailsPage from '@/pages/Contractors/Contractors';
+import SubscriptionPlansPage from '@/pages/Subscriptions/subscriptions';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'contractor-details',
         element: <ContractorDetailsPage />,
+      },
+      {
+        path: 'manage-subscription',
+        element: <SubscriptionPlansPage />,
       },
       {
         path: '*',

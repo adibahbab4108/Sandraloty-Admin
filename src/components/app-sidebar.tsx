@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/sidebar';
 import { Link } from 'react-router';
 import { useAuth } from '@/hook/useAuth';
+import { BadgeDollarSign, Users } from 'lucide-react';
 
 const data = {
   user: {
@@ -38,7 +39,12 @@ const data = {
     {
       title: 'Contractor Details',
       url: '/dashboard/contractor-details',
-      icon: IconUsers,
+      icon: Users,
+    },
+    {
+      title: 'Manage Subscription',
+      url: '/dashboard/manage-subscription',
+      icon: BadgeDollarSign,
     },
   ],
 };
