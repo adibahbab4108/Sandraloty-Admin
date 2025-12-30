@@ -34,7 +34,7 @@ export default function Users() {
 
   return (
     <div className="p-2">
-      <header className="flex items-center justify-between mb-2">
+      <header className="flex items-center justify-between mb-10">
         <h1 className="text-2xl font-bold">All Users</h1>
         <div className="flex items-center gap-2">
           <Select onValueChange={handleSort} value={sort}>

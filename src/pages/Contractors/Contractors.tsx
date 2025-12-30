@@ -41,23 +41,32 @@ export default function ContractorDetailsPage() {
 
   return (
     <div className="container mx-auto py-10">
-      <Card>
-        <CardHeader>
-          <CardTitle>Service Providers / Contractors</CardTitle>
-          <CardDescription>
-            Manage and view all registered contractors on the platform ({providers.length} total)
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {providers.length > 0 ? (
-            <ProvidersTable data={providers} />
-          ) : (
-            <div className="text-center py-10 text-muted-foreground">
-              No service providers found.
-            </div>
-          )}
-        </CardContent>
-      </Card>
+      <div>
+        <div className="mb-10">
+          <h1 className="text-3xl font-bold">Subscription Plans</h1>
+          <p className="text-muted-foreground mt-1">
+            Manage pricing tiers and features for contractors
+          </p>
+        </div>
+
+        <Card>
+          {/* <CardHeader>
+            <CardTitle>Service Providers / Contractors</CardTitle>
+            <CardDescription>
+              Manage and view all registered contractors on the platform ({providers.length} total)
+            </CardDescription>
+          </CardHeader> */}
+          <CardContent>
+            {providers.length > 0 ? (
+              <ProvidersTable data={providers} />
+            ) : (
+              <div className="text-center py-10 text-muted-foreground">
+                No service providers found.
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

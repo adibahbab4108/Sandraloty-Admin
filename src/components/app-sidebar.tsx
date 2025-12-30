@@ -15,6 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, } from "@/components/ui/tooltip";
 import { Link } from 'react-router';
 import { useAuth } from '@/hook/useAuth';
 import { BadgeDollarSign, Users } from 'lucide-react';
@@ -56,20 +57,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:p-1.5!">
-              <Link to="/dashboard">
-                <img
-                  src="/vite.svg"
-                  alt="Logo"
-                  className="size-6"
-                />
-                <span className="text-base font-semibold">
-                  Mic<span className="text-primary">kanic</span> Admin
-                </span>
-              </Link>
-            </SidebarMenuButton>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!" >
+                    <Link to="/dashboard">
+                      <img src="/signup_logo.svg" alt="Logo" className="size-6 w-full" />
+                      <span className="text-base font-semibold">
+                        Mic<span className="text-primary">kanic</span> Admin
+                      </span>
+                    </Link>
+                  </SidebarMenuButton>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Mickanic Admin Dashboard</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
