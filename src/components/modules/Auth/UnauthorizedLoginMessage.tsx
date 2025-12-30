@@ -15,7 +15,7 @@ export const UnauthorizedLoginMessage = () => (
 
             <button
                 onClick={() => window.location.href = '/login'}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 rounded-lg transition duration-200"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 rounded-lg transition duration-200 cursor-pointer"
             >
                 Go back to Login
             </button>

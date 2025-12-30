@@ -4,6 +4,7 @@ import DashboardLayout from '@/layout/dashboard-layout';
 import Users from '@/pages/Users/Users';
 import LoginPage from '@/pages/Login/LoginPage';
 import { ProtectedRoute } from '@/layout/protected-route';
+import ContractorDetailsPage from '@/pages/Contractors/Contractors';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <DashboardLayout />
-      // </ProtectedRoute>
+      </ProtectedRoute>
     ),
     children: [
       {
@@ -32,8 +33,12 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: 'users',
+        path: 'manage-users',
         element: <Users />,
+      },
+      {
+        path: 'contractor-details',
+        element: <ContractorDetailsPage />,
       },
       {
         path: '*',

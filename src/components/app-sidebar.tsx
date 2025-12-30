@@ -31,8 +31,13 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: 'Users',
-      url: '/dashboard/users',
+      title: 'Manage Users',
+      url: '/dashboard/manage-users',
+      icon: IconUsers,
+    },
+    {
+      title: 'Contractor Details',
+      url: '/dashboard/contractor-details',
       icon: IconUsers,
     },
   ],

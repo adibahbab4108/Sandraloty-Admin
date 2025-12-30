@@ -1,51 +1,21 @@
-import { axiosBaseQuery } from '@/redux/axiosBaseQuery';
-import { createApi } from '@reduxjs/toolkit/query/react';
 
-export const professionalsApi = createApi({
-  reducerPath: 'professionalsApi',
-  baseQuery: axiosBaseQuery(),
-  tagTypes: ['Auth', 'User', 'Profile'],
+import { baseApi } from '../baseApi';
+
+export const professionalsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // Authentication endpoints
-    getProfessionals: builder.query({
+    getProfessionalDetails: builder.query({
       query: () => ({
         url: '/contractors',
         method: 'GET',
       }),
-      providesTags: ['User'],
-    }),
-    // ...... above all ar updated
-
-    user: builder.query({
-      query: (id) => ({
-        url: `/users/${id}`,
-        method: 'GET',
-      }),
-      providesTags: ['User'],
+      providesTags: ['USER'],
     }),
 
-    updateUser: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/users/${id}`,
-        method: 'PATCH',
-        data,
-      }),
-      invalidatesTags: ['User'],
-    }),
-
-    deleteUser: builder.mutation({
-      query: (id) => ({
-        url: `/users/${id}`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['User'],
-    }),
   }),
-});
+})
+
 
 export const {
-  useGetProfessionalsQuery,
-  useUserQuery,
-  useDeleteUserMutation,
-  useUpdateUserMutation,
+  useGetProfessionalDetailsQuery,
 } = professionalsApi;

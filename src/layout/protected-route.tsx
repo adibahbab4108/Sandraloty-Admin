@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAuth } from '@/hook/useAuth';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate } from 'react-router';
 import { toast } from 'sonner';
 import { UnauthorizedLoginMessage } from '@/components/modules/Auth/UnauthorizedLoginMessage';
 import { Loading } from '@/components/common/LoadingPage';
