@@ -7,6 +7,8 @@ import { MoreHorizontal, Edit, Trash2, Check, X } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
 import { EditPlanDialog } from "./EditPlanDialog";
+import { useDeleteSubscriptionPlanMutation } from "@/redux/features/subscription/subscription.api";
+import { toast } from "sonner";
 
 export type SubscriptionPlan = {
   id: string;
@@ -33,6 +35,22 @@ type SubscriptionCardProps = {
 
 export function SubscriptionCard({ plan }: SubscriptionCardProps) {
   const [isEditOpen, setIsEditOpen] = useState(false);
+ 
+  const [deletePlan, { isLoading }] = useDeleteSubscriptionPlanMutation()
+  const handleDeletePlan = async (id: string) => {
+    console.log(id)
+    try {
+      const result = await deletePlan(id)
+      console.log(result)
+      if (result.error) toast.error((result.error as any)?.data?.error?.message)
+      else
+        toast.success("Deleted Permanently")
+
+    } catch (error) {
+      toast.error("Something went wrong")
+    }
+  }
+
   return (
     <>
       <Card className={`relative overflow-hidden transition-all ${plan.is_highlighted ? "border-primary shadow-lg" : ""}`}>
@@ -80,7 +98,7 @@ export function SubscriptionCard({ plan }: SubscriptionCardProps) {
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction className="bg-destructive text-destructive-foreground">
+                      <AlertDialogAction onClick={() => handleDeletePlan(plan.id)} className="bg-destructive text-destructive-foreground">
                         Delete Permanently
                       </AlertDialogAction>
                     </AlertDialogFooter>

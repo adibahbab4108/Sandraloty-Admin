@@ -7,10 +7,13 @@ import { Button } from "@/components/ui/button";
 import { useGetSubscriptionsQuery } from "@/redux/features/subscription/subscription.api";
 import { Plus } from "lucide-react";
 import { SubscriptionCard, type SubscriptionPlan } from "./SubscriptionCard";
+import { AddPlanDialog } from "./AddPlanDialog";
+import { useState } from "react";
 
 
 export default function SubscriptionPlansPage() {
-    const { data: plans = [], isLoading } = useGetSubscriptionsQuery(undefined);
+     const [isAddOpen, setIsAddOpen] = useState(false);
+    const { data: plans = [], isLoading, refetch } = useGetSubscriptionsQuery(undefined);
 
     if (isLoading) {
         return (
@@ -42,7 +45,7 @@ export default function SubscriptionPlansPage() {
                     </p>
                 </div>
 
-                <Button>
+                <Button onClick={() => setIsAddOpen(true)}>
                     <Plus className="mr-2 h-4 w-4" />
                     Add New Plan
                 </Button>
@@ -53,6 +56,11 @@ export default function SubscriptionPlansPage() {
                     <SubscriptionCard key={plan.id} plan={plan} />
                 ))}
             </div>
+            <AddPlanDialog
+                open={isAddOpen}
+                onOpenChange={setIsAddOpen}
+                onSuccess={refetch}
+            />
 
             {plans.length === 0 && (
                 <div className="text-center py-20">
