@@ -47,10 +47,15 @@ const data = {
       url: '/dashboard/manage-subscription',
       icon: BadgeDollarSign,
     },
+    {
+      title: 'View  Jobs',
+      url: '/dashboard/view-jobs',
+      icon: BadgeDollarSign,
+    },
   ],
 };
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user, token, logout, isLoading } = useAuth();
+  const { user, token } = useAuth();
   console.log(user, token)
   return (
     <Sidebar collapsible="icon" {...props}>

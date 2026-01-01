@@ -32,7 +32,7 @@ export function NavUser() {
 
   console.log(user)
   const handleLogout = () => {
-    logout() // handled from localStorage
+    logout() 
     toast.success("Logout successfull")
     navigate('/login');
   };

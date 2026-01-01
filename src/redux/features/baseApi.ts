@@ -9,6 +9,6 @@ export const baseApi = createApi({
   //   credentials: "include",
   // }),
   baseQuery: axiosBaseQuery(),
-  tagTypes: ["USER", "SUBSCRIPTION"],
+  tagTypes: ["USER", "SUBSCRIPTION","JOB"],
   endpoints: () => ({}),
 });

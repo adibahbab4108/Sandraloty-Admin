@@ -6,6 +6,7 @@ import LoginPage from '@/pages/Login/LoginPage';
 import { ProtectedRoute } from '@/layout/protected-route';
 import ContractorDetailsPage from '@/pages/Contractors/Contractors';
 import SubscriptionPlansPage from '@/pages/Subscriptions/subscriptions';
+import ViewJobsPage from '@/pages/Jobs/Jobs';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: 'manage-subscription',
         element: <SubscriptionPlansPage />,
+      },
+      {
+        path: 'view-jobs',
+        element: <ViewJobsPage />,
       },
       {
         path: '*',
